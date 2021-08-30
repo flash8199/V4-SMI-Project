@@ -1,0 +1,22 @@
+<template>
+    <!-- <div class="slds-m-top_small slds-m-bottom_medium">
+        <lightning-button variant="mentor" label="Mentor" title="Mentor" onclick={clickMentorButton} class="slds-m-left_x-small"></lightning-button>
+        <lightning-button label="Manager" title="Manager" onclick={clickManagerButton} class="slds-m-left_x-small"></lightning-button>
+    </div> --> 
+    <lightning-tabset>
+        <lightning-tab label="Manager List">
+            <span>
+                <template if:true={getContactList.data}>
+                    <template for:each={getContactList.data} for:item="contact">
+                        <li key={contact.Id}>
+                            {contact.Name}
+                            </li>
+                    </template>
+                </template>
+                    <template if:true={getContactList.error}>
+                                {getContactList.error}
+                    </template>
+            </span>
+        </lightning-tab>
+    </lightning-tabset>   
+</template>
