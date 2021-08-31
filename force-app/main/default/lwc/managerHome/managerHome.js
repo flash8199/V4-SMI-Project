@@ -7,7 +7,8 @@ export default class ManagerHome extends NavigationMixin(LightningElement) {
 
     @track mentorRecords;
     @track errors;
-    @api objectApiName = "User_Functional_Role__c";
+    @api objectApiName = "Employee_Associated_with_Mentors__c";
+    @api objectApiRef = "OnBoarding_Step__c";
     @api objectApi = "Assigned_Task__c";
     
     
