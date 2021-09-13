@@ -1,0 +1,20 @@
+<template>
+    <template if:true={taskRecord}>
+        <lightning-card title ={taskRecord.Name} icon-name="standard:service_report">
+            <div class="slds-var-m-around_small">
+
+                <p>
+                <strong>Employee ID :  </strong> {taskRecord.Name} </br>
+                <strong>Assigned To :  </strong> {taskRecord.Assigned_To__r.Name} </br>
+                <strong>Task Status	 : </strong> {taskRecord.Task_Status__c}
+                </p>
+                
+                <br>
+                
+                <p class="slds-var-m-around_small">
+                <lightning-button label="View Details" variant="brand" alternative-text="Open record" onclick={handleOpenRecord}></lightning-button>
+                </p>
+            </div>
+        </lightning-card>
+    </template>
+</template>

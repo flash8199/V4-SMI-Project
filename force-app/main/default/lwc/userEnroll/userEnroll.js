@@ -3,7 +3,8 @@ import { LightningElement, api } from 'lwc';
 export default class UserEnroll extends LightningElement {
 
 
-    @api objectApiName = "User_Functional_Role__c";
+    @api objectApiName = "Employee_Associated_with_Mentors__c";
+    
 
     handleSuccess(){
         alert('Record Created !!');

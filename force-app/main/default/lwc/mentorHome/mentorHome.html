@@ -11,11 +11,11 @@
                                 <div class="slds-grid slds-wrap">
                                 <template for:each={employeeRecords} for:item="item">
                                         <div class="slds-col slds-size_1-of-3" key={item.Id}>
-                                            <div class="slds-p-right_x-small">
-                                                <div class="slds-p-top_x-small">
+                                            
+                                                
                                                     <c-employee-t employee-record={item} onemployeeview={handleEmployeeView}></c-employee-t>
-                                                </div>
-                                            </div>
+                                            
+                                            
                                         </div>
                                     </template>
                                 </div>
@@ -32,18 +32,62 @@
             <lightning-tab label="Assign Task">
 
                 <lightning-card title="Assign Task"
-                icon-name="custom:custom53">
-                <div class="slds-m-around_small">
-                    <lightning-record-form       
-                        object-api-name={objectApiName}
-                        layout-type="Full"
-                        columns="2"
-                        mode="edit"
-                        onsuccess={handleSuccess}
-                    >
-                    </lightning-record-form>
-                </div>
-                </lightning-card>
+                icon-name="standard:record_lookup">
+        <div class="slds-m-around_small">
+
+
+        <lightning-record-edit-form
+        record-id={recordId}
+        object-api-name="Assigned_Task__c"
+        onsuccess={handleResetFunction}
+        >
+        <lightning-messages>
+        </lightning-messages>
+
+        <div class="slds-grid slds-wrap">  
+
+        <div class="slds-col slds-size_1-of-2">
+            <lightning-input-field field-name="Assigned_To__c"></lightning-input-field>
+        </div>
+
+        <div class="slds-col slds-size_1-of-2">
+            <lightning-input-field field-name="Onboarding_Step__c"></lightning-input-field>
+        </div>
+
+        <div class="slds-col slds-size_1-of-2">
+            <lightning-input-field field-name="Functional_Role__c"></lightning-input-field>
+        </div>
+
+        <div class="slds-col slds-size_1-of-2">
+            <lightning-input-field field-name="Mentor_Name__c"></lightning-input-field>
+        </div>
+
+        <div class="slds-col slds-size_1-of-2">
+            <lightning-input-field field-name="Any_Additional_Requirements__c"></lightning-input-field>
+        </div>
+
+        <div class="slds-col slds-size_1-of-2">
+        <lightning-input-field field-name="Deadline_Date_and_Time__c"></lightning-input-field>
+        </div>
+
+        <div class="slds-col slds-size_1-of-2">
+        <lightning-input-field field-name="Task_Status__c"></lightning-input-field>
+        </div>
+
+
+        </div>
+
+        <lightning-button
+                class="slds-m-top_small"
+                type="submit"
+                variant="brand"
+                label="Assign Task"
+                onclick={handleSuccess}>
+            </lightning-button>
+        </lightning-record-edit-form>
+
+        </div>
+    </lightning-card>
 
 
 

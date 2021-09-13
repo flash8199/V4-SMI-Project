@@ -1,0 +1,19 @@
+c-employee-t {
+    margin: var(--lwc-borderWidthThin, 1px) 0;
+}
+
+c-employee-t {
+    border: solid var(--lwc-borderWidthThin, 1px) #ecebea;
+    border-radius: var(--lwc-borderRadiusMedium, 4px);
+    padding: 0 var(--lwc-varSpacingXxxSmall, 2px);
+}
+
+c-employee-t:before {
+    content: 'c-contact-tile';
+    color: rgb(221, 219, 218);
+    position: absolute;
+    top: -9px;
+    left: var(--lwc-varSpacingXxSmall, 4px);
+    background-color: var(--lwc-colorBackgroundAlt, #ffffff);
+    padding: 0 var(--lwc-varSpacingXxSmall, 4px);
+}

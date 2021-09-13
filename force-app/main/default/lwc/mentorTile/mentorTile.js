@@ -4,7 +4,7 @@ export default class MentorTile extends LightningElement {
 
     @api mentorRecord;
 
-    pictureUrl = 'http://drive.google.com/uc?id=1iMOoH1ZcG_u-PUjFVQoVjePMexjEvGUf';
+    pictureUrl = 'http://drive.google.com/uc?id=1ut-Lz2nmhvHFE2E32WSkLg_mp5FF8uDm';
 
 
     handleOpenRecord() {

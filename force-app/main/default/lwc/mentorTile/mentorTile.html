@@ -1,20 +1,25 @@
 <template>
     <template if:true={mentorRecord}>
-        <lightning-card title ={mentorRecord.Name} icon-name="custom:custom54">
-            <div class="slds-var-m-around_small">
-                <p>
-                    <img src={pictureUrl} width="300" height="300"/>
-                </p>
-                <p>
+        <lightning-layout vertical-align="center">
+            <lightning-layout-item>
+                <span class="slds-avatar slds-avatar_circle slds-avatar_large">
+                     <img src={mentorRecord.Profile_Picture__c} height="500" width="500" alt="Profile photo" />    
+                </span>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small">
                 
-                <strong>Mentor Name :  </strong> {mentorRecord.Mentor_Name__r.Name} </br>
-                <strong>Mentor Department :  </strong> {mentorRecord.Name} </br>
+                <p onclick={handleOpenRecord}> 
+                    {mentorRecord.Mentor_Name__r.Name} 
                 </p>
-                <br>
-                <p class="slds-var-m-around_small">
-                    <lightning-button label="View Details" variant="brand" alternative-text="Open record" onclick={handleOpenRecord}></lightning-button>
+                <p  style="text-color:rgb(233, 78, 225);" onclick={handleOpenRecord}> 
+                    {mentorRecord.Name}
                 </p>
-            </div>
-        </lightning-card>
+
+    
+                
+                
+                
+            </lightning-layout-item>
+        </lightning-layout>
     </template>
 </template>

@@ -1,6 +1,6 @@
 <template>
     <lightning-card>
-        <lightning-tabset>
+        <lightning-tabset variant="brand">
             <lightning-tab label="Mentors And Employees">
                 <div class="slds-m-around_small">
                     <div>
@@ -11,11 +11,9 @@
                                 <div class="slds-grid slds-wrap">
                                 <template for:each={mentorRecords} for:item="item">
                                         <div class="slds-col slds-size_1-of-3" key={item.Id}>
-                                            <div class="slds-p-right_x-small">
-                                                <div class="slds-p-top_x-small">
+                                           
                                                     <c-mentor-tile mentor-record={item} onmentorview={handleMentorView}></c-mentor-tile>
-                                                </div>
-                                            </div>
+                                               
                                         </div>
                                     </template>
                                 </div>
@@ -30,65 +28,195 @@
             </lightning-tab>
 
 
-            <lightning-tab label="User Enrollment">
+    <lightning-tab label="User Enrollment">
 
-                <lightning-card title="User Enrollment"
-                icon-name="custom:custom53">
-                <div class="slds-m-around_small">
-                    <lightning-record-form       
-                        object-api-name={objectApiName}
-                        layout-type="Full"
-                        columns="2"
-                        mode="edit"
-                        onsuccess={handleSuccess}
-                    >
-                    </lightning-record-form>
-                </div>
-                </lightning-card>
+        <lightning-card title="User Enrollment"
+                    icon-name="standard:record_update">
+            <div class="slds-m-around_small">
 
 
+            <lightning-record-edit-form
+            record-id={recordId}
+            object-api-name="Employee_Associated_with_Mentors__c"
+            layout-type="Full"
+            columns="2"
+            mode="create"
+            onsuccess={handleResetFunction}
+            >
+            <lightning-messages>
+            </lightning-messages>
 
-            </lightning-tab>
+            <div class="slds-grid slds-wrap">  
+
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-input-field field-name="SMI_Employee__c"></lightning-input-field>
+            </div>
+
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-input-field field-name="Role__c"></lightning-input-field>
+            </div>
+
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-input-field field-name="Mentor_Name__c"></lightning-input-field>
+            </div>
+
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-input-field field-name="Mentor_Department__c"></lightning-input-field>
+            </div>
+
+            <div class="slds-col slds-size_1-of-2">
+            <lightning-input-field field-name="Onboarding_Start_Date__c"></lightning-input-field>
+            </div>
+
+            <div class="slds-col slds-size_1-of-2">
+            <lightning-input-field field-name="Onboarding_End_Date__c"></lightning-input-field>
+            </div>
+
+            <div class="slds-col slds-size_1-of-2">
+            <lightning-input-field field-name="Send_Welcome_Email__c"></lightning-input-field>
+            </div>
+
+
+            </div>
+
+            <lightning-button
+                    class="slds-m-top_small"
+                    type="submit"
+                    variant="brand"
+                    label="Create New Explorer"
+                    onclick={handleSuccess}>
+                </lightning-button>
+            </lightning-record-edit-form>
+
+            </div>
+        </lightning-card>
+
+
+
+    </lightning-tab>
 
 
 
             <lightning-tab label="Onboarding Step">
 
-                <lightning-card title="Onboarding Step"
-                icon-name="custom:custom53">
-                <div class="slds-m-around_small">
-                    <lightning-record-form       
-                        object-api-name={objectApiRef}
-                        layout-type="Full"
-                        columns="2"
-                        mode="edit"
-                        onsuccess={handleSuccess}
-                    >
-                    </lightning-record-form>
-                </div>
-                </lightning-card>
+            <lightning-card title="User Enrollment"
+                    icon-name="standard:record_create">
+            <div class="slds-m-around_small">
+
+
+            <lightning-record-edit-form
+            record-id={recordId}
+            object-api-name="OnBoarding_Step__c"
+            onsuccess={handleResetFunction}
+            >
+            <lightning-messages>
+            </lightning-messages>
+
+            <div class="slds-grid slds-wrap">  
+
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-input-field field-name="Name"></lightning-input-field>
+            </div>
+
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-input-field field-name="Duration_Type__c"></lightning-input-field>
+            </div>
+
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-input-field field-name="Duration__c"></lightning-input-field>
+            </div>
+
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-input-field field-name="Description__c"></lightning-input-field>
+            </div>
+
+            <div class="slds-col slds-size_1-of-2">
+            <lightning-input-field field-name="URL__c"></lightning-input-field>
+            </div>
+
+            <div class="slds-col slds-size_1-of-2">
+            <lightning-input-field field-name="Mandatory__c"></lightning-input-field>
+            </div>
+
+
+            </div>
+
+            <lightning-button
+                    class="slds-m-top_small"
+                    type="submit"
+                    variant="brand"
+                    label="Create Onboarding Task"
+                    onclick={handleSuccess}>
+                </lightning-button>
+            </lightning-record-edit-form>
+
+            </div>
+        </lightning-card>
 
 
 
             </lightning-tab>
 
-
-
             <lightning-tab label="Assign Task">
 
-                <lightning-card title="Assign Task"
-                icon-name="custom:custom53">
-                <div class="slds-m-around_small">
-                    <lightning-record-form       
-                        object-api-name={objectApi}
-                        layout-type="Full"
-                        columns="2"
-                        mode="edit"
-                        onsuccess={handleSuccess}
-                    >
-                    </lightning-record-form>
-                </div>
-                </lightning-card>
+        <lightning-card title="Assign Task"
+                icon-name="standard:record_update">
+        <div class="slds-m-around_small">
+
+
+        <lightning-record-edit-form
+        record-id={recordId}
+        object-api-name="Assigned_Task__c"
+        onsuccess={handleResetFunction}
+        >
+        <lightning-messages>
+        </lightning-messages>
+
+        <div class="slds-grid slds-wrap">  
+
+        <div class="slds-col slds-size_1-of-2">
+            <lightning-input-field field-name="Assigned_To__c"></lightning-input-field>
+        </div>
+
+        <div class="slds-col slds-size_1-of-2">
+            <lightning-input-field field-name="Onboarding_Step__c"></lightning-input-field>
+        </div>
+
+        <div class="slds-col slds-size_1-of-2">
+            <lightning-input-field field-name="Functional_Role__c"></lightning-input-field>
+        </div>
+
+        <div class="slds-col slds-size_1-of-2">
+            <lightning-input-field field-name="Mentor_Name__c"></lightning-input-field>
+        </div>
+
+        <div class="slds-col slds-size_1-of-2">
+            <lightning-input-field field-name="Any_Additional_Requirements__c"></lightning-input-field>
+        </div>
+
+        <div class="slds-col slds-size_1-of-2">
+        <lightning-input-field field-name="Deadline_Date_and_Time__c"></lightning-input-field>
+        </div>
+
+        <div class="slds-col slds-size_1-of-2">
+        <lightning-input-field field-name="Task_Status__c"></lightning-input-field>
+        </div>
+
+
+        </div>
+
+        <lightning-button
+                class="slds-m-top_small"
+                type="submit"
+                variant="brand"
+                label="Assign Task"
+                onclick={handleSuccess}>
+            </lightning-button>
+        </lightning-record-edit-form>
+
+        </div>
+    </lightning-card>
+
 
 
 

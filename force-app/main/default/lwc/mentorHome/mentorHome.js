@@ -2,6 +2,9 @@ import { NavigationMixin } from 'lightning/navigation';
 import { LightningElement, track, wire, api } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import searchEmployee from '@salesforce/apex/employeeController.searchEmployee';
+import getAssigendTask from '@salesforce/apex/taskController.getAssigendTask';
+import { createMessageContext, releaseMessageContext,publish} from 'lightning/messageService';
+import SAMPLEMC from "@salesforce/messageChannel/SampleMessageChannel__c";
 export default class MentorHome extends NavigationMixin(LightningElement) {
 
     @api objectApiName = "Assigned_Task__c";
@@ -9,6 +12,39 @@ export default class MentorHome extends NavigationMixin(LightningElement) {
 
     @track employeeRecords;
     @track errors;
+    context = createMessageContext();
+    @track taskList;
+    connectedCallback(){
+        getAssigendTask()
+            .then(result =>{
+                this.taskList = result;
+            })
+            .catch(error=>{
+                this.taskList = error;
+            });
+    }
+    handleClick(event) {
+        event.preventDefault();                
+        const message = {
+            recordId: event.target.dataset.value,
+            recordData: { value: "message from Lightning Web Component" }
+        };
+        publish(this.context, SAMPLEMC, message);
+    }
+
+    @wire(getAssigendTask)
+    wiredTask({
+        data, error
+    }) {
+        if(data){
+            this.employeeRecords = data;
+            this.errors = undefined;
+        }
+        if(error){
+            this.errors = error;
+            this.employeeRecords = undefined;
+        }
+    }
 
     @wire(searchEmployee)
         wiredRecords({error, data}){
@@ -30,6 +66,7 @@ export default class MentorHome extends NavigationMixin(LightningElement) {
             console.log('Employee Record', result);
             this.employeeRecords = result;
             this.errors = undefined;
+           
             
         })
 
@@ -65,6 +102,19 @@ export default class MentorHome extends NavigationMixin(LightningElement) {
             
         });
         this.dispatchEvent(toast);
+    }
+
+
+    handleResetFunction(event){
+        const inputFields = this.template.querySelectorAll(
+            'lightning-input-field'
+        );
+        if (inputFields) {
+            inputFields.forEach(field => {
+                field.reset();
+            });
+        }
+        console.log("form resetted");
     }
 
 

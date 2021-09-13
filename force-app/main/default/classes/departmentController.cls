@@ -1,7 +1,4 @@
 public with sharing class departmentController {
-    public departmentController() {
-
-    }
 
 
     @AuraEnabled(cacheable=true)

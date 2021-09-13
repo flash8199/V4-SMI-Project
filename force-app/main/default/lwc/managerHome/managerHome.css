@@ -1,0 +1,6 @@
+.mentor-tile {
+    border-style: groove;
+    border: 10px solid #be2626;
+    border-radius: .25rem;
+    display: block;
+}

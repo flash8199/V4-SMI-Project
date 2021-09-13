@@ -1,0 +1,35 @@
+<template>
+    <lightning-card title="Onboarding Steps" icon-name="standard:job_profile">
+        <div class="slds-card__body_inner">
+    
+            <template if:true={department.data}>
+                <table class="slds-table slds-table_fixed-layout slds-table_bordered">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Name">Name</div>
+                            </th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={department.data} for:item="item">
+                            <tr class="slds-hint-parent" key={item.Id}>
+                                <th data-label="Name" scope="row" class="slds-truncate">
+                                    <lightning-button-icon icon-name="utility:chevronright" variant="bare"
+                                        alternative-text="Open record" onclick={viewRecord} value={item.Id}>
+                                    </lightning-button-icon>
+                                    <a onclick={viewDepartment} data-id={item.Id}
+                                        target="_blank">{item.Name}</a>
+                                </th>
+                                
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+    
+            </template>
+    
+        </div>
+    </lightning-card>
+    </template>

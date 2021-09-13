@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Onboarding Detail">
+        <div >
+            <lightning-record-view-form record-id={userId} object-api-name="User">
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Name"></lightning-output-field>
+                        <lightning-output-field field-name="CompanyName"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Onboarding_Start_Date__c"></lightning-output-field>
+                        <lightning-output-field field-name="Onboarding_End_Date__c"></lightning-output-field>
+                        
+                    </div>
+                </div>
+                </lightning-record-view-form>
+            </div>
+            </lightning-card>
+    
+</template>

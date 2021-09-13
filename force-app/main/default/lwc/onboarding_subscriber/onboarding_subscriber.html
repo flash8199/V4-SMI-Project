@@ -1,0 +1,18 @@
+<template>
+    
+    <lightning-card title="View the Onboarding Status" icon-name="standard:service_report">
+        <div class="slds-p-right_x-small">
+        <div class="slds-var-m-around_small">
+        <p class="slds-p-horizontal_small">
+                <lightning-record-form
+                    record-id={onboardingId}
+                    object-api-name={objectApi}
+                    fields={fields}
+                    columns="1"
+                    mode="view">
+            </lightning-record-form>
+        </p>
+        </div>
+    </div>
+    </lightning-card>
+</template>

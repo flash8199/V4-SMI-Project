@@ -3,12 +3,14 @@ import { LightningElement, track, wire, api } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import searchMentor from '@salesforce/apex/mentorController.searchMentor';
 
+
 export default class ManagerHome extends NavigationMixin(LightningElement) {
 
     @track mentorRecords;
     @track errors;
     @api objectApiName = "Employee_Associated_with_Mentors__c";
     @api objectApiRef = "OnBoarding_Step__c";
+    @api errorMessage;
     @api objectApi = "Assigned_Task__c";
     
     
@@ -56,28 +58,45 @@ export default class ManagerHome extends NavigationMixin(LightningElement) {
 		
 		this[NavigationMixin.Navigate]({
             
-			type: 'standard__recordRelationshipPage',
+			type: 'standard__objectPage',
 			attributes: {
 				
-                recordId: 'a069D000008dzpHQAQ',
-				objectApiName: 'SMI_Mentor__c',
-                relationshipApiName: 'Employee_Associated_with_Mentors__c',
-				actionName: 'view'
+                
+				objectApiName: 'Employee_Associated_with_Mentors__c',
+                
+				actionName: 'list'
 			}
 		});
 	}
 
 
     handleSuccess(){
+
+       
+
+    }
+
+    handleResetFunction(event){
+        const inputFields = this.template.querySelectorAll(
+            'lightning-input-field'
+        );
+        if (inputFields) {
+            inputFields.forEach(field => {
+                field.reset();
+            });
+        }
+        console.log("form resetted");
+
         const toast = new ShowToastEvent({
             'title' : 'Created',
             "message" : 'Record Created Successfully',
             "variant" : "success",
             
         });
-        this.dispatchEvent(toast);
-
+        this.dispatchEvent(toast)
+        console.log("Data submitted");
     }
+
 
 
 

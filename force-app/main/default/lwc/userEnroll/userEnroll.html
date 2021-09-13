@@ -2,14 +2,24 @@
     <lightning-card title="User Enrollment"
     icon-name="custom:custom53">
     <div class="slds-m-around_small">
-        <lightning-record-form       
+        <lightning-record-edit-form 
             object-api-name={objectApiName}
-            layout-type="Full"
             columns="2"
-            mode="edit"
             onsuccess={handleSuccess}
-        >
-        </lightning-record-form>
+         >
+            <lightning-input-field field-name="SMI_Employee__c"></lightning-input-field>
+            <div class="slds-p-bottom_xx-small">
+                <div class="slds-p-left_xx-small">
+                    <lightning-formatted-url value="https://hfs--v4tecjnkis.lightning.force.com/lightning/setup/ManageUsers/home" tooltip="Use https://domain-name" label="Haven't created the New Explorer User? Create new User" target="_blank" ></lightning-formatted-url>
+                </div>
+            </div>
+            <lightning-input-field field-name="Mentor_Name__c"></lightning-input-field>
+            <lightning-input-field field-name="Onboarding_Start_Date__c"></lightning-input-field>
+            <lightning-input-field field-name="Onboarding_End_Date__c"></lightning-input-field>
+            <lightning-input-field field-name="Onboarding_Status__c"></lightning-input-field>
+            <lightning-button type="submit" label="Save" variant="brand" ></lightning-button>
+         </lightning-record-edit-form>
+
     </div>
     </lightning-card>
 </template>

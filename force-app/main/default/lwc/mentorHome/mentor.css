@@ -1,0 +1,6 @@
+@import 'c/cssLibrary';
+
+
+c-employee-t {
+    margin: var(--lwc-borderWidthThin, 1px) 0;
+}

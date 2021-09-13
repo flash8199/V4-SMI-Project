@@ -1,29 +1,28 @@
 <template>
-
-    <div class="slds-m-around_small">
-        <div>
-            <c-employee-search onsearch={handleEvent}>  </c-employee-search>
-            </div>
-                <div>
-                    <template if:true={employeeRecords}>
-                    <div class="slds-grid slds-wrap">
-                    <template for:each={employeeRecords} for:item="item">
-                            
-                            <div class="slds-col slds-size_1-of-3" key={item.Id}>
-                                <div class="slds-p-right_x-small">
-                                    <div class="slds-p-top_x-small">
-                                        <c-employee-t employee-record={item} onemployeeview={handleEmployeeView}></c-employee-t>
-                                    </div>
+    <lightning-card title="Employee List" icon-name="custom:custom57">
+        <div class="slds-m-around_small">
+            <div>
+                <c-employee-search onsearch={handleEvent}>  </c-employee-search>
+                </div>
+                    <div>
+                        <template if:true={employeeRecords}>
+                        <div class="slds-grid slds-wrap">
+                        <template for:each={employeeRecords} for:item="item">
+                                <div class="slds-col slds-size_1-of-3" key={item.Id}>
+                                    
+                                        
+                                            <c-employee-t employee-record={item} onemployeeview={handleEmployeeView}></c-employee-t>
+                                    
+                                    
                                 </div>
-                            </div>
+                            </template>
+                        </div>
+    
                         </template>
                     </div>
-
-                    </template>
-                </div>
-            
-            
-
-    </div>
+                
+                
     
+        </div>
+    </lightning-card>
 </template>
